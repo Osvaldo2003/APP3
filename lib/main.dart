@@ -8,7 +8,7 @@ import 'package:osva2/screen/sensor_screen.dart';
 import 'package:osva2/screen/speech_to_text_screen.dart';
 import 'package:osva2/screen/text_to_speech_screen.dart';
 
-final Uri _url = Uri.parse('https://github.com/Osvaldo2003/APP_PRACTICA2.git');
+final Uri _url = Uri.parse('https://github.com/Osvaldo2003/APP3.git');
 
 void main() {
   runApp(const MyApp());
