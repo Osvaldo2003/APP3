@@ -11,7 +11,7 @@ class QRScannerScreen extends StatefulWidget {
 
 class _QRScannerScreenState extends State<QRScannerScreen> {
   String? qrCode;
-  bool isScanned = false; // Para evitar múltiples redirecciones
+  bool isScanned = false; 
 
   @override
   Widget build(BuildContext context) {
@@ -25,10 +25,10 @@ class _QRScannerScreenState extends State<QRScannerScreen> {
           Expanded(
             child: MobileScanner(
               onDetect: (barcodeCapture) async {
-                // Obtener la lista de códigos escaneados
+                
                 final List<Barcode> barcodes = barcodeCapture.barcodes;
 
-                // Asegurarse de que hay al menos un código escaneado
+                
                 if (barcodes.isNotEmpty && !isScanned) {
                   final String code = barcodes.first.rawValue ?? "---";
 
@@ -37,7 +37,7 @@ class _QRScannerScreenState extends State<QRScannerScreen> {
                     isScanned = true; // Evita múltiples escaneos
                   });
 
-                  // Intenta abrir la URL si el QR contiene un link
+                  
                   if (await canLaunch(code)) {
                     await launch(code);
                   } else {

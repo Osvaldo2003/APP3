@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sensors_plus/sensors_plus.dart'; // Asegúrate de tener esta importación
+import 'package:sensors_plus/sensors_plus.dart'; 
 
 class SensorScreen extends StatefulWidget {
   const SensorScreen({super.key}); // Utilizando super.key
@@ -17,7 +17,7 @@ class SensorScreenState extends State<SensorScreen> { // Clase pública
   void initState() {
     super.initState();
 
-    // Escuchar los eventos del acelerómetro
+   
     accelerometerEvents.listen((AccelerometerEvent event) {
       setState(() {
         _accelerometerData =
@@ -25,7 +25,7 @@ class SensorScreenState extends State<SensorScreen> { // Clase pública
       });
     });
 
-    // Escuchar los eventos del giroscopio
+    
     gyroscopeEvents.listen((GyroscopeEvent event) {
       setState(() {
         _gyroscopeData =
@@ -33,7 +33,7 @@ class SensorScreenState extends State<SensorScreen> { // Clase pública
       });
     });
 
-    // Escuchar los eventos del magnetómetro
+  
     magnetometerEvents.listen((MagnetometerEvent event) {
       setState(() {
         _magnetometerData =
