@@ -9,16 +9,35 @@ class SensorScreen extends StatefulWidget {
 }
 
 class SensorScreenState extends State<SensorScreen> { // Clase pública
-  String _sensorData = "Datos del sensor no disponibles";
+  String _accelerometerData = "Acelerómetro: No disponible";
+  String _gyroscopeData = "Giroscopio: No disponible";
+  String _magnetometerData = "Magnetómetro: No disponible";
 
   @override
   void initState() {
     super.initState();
+
     // Escuchar los eventos del acelerómetro
     accelerometerEvents.listen((AccelerometerEvent event) {
       setState(() {
-        _sensorData =
+        _accelerometerData =
             "Acelerómetro:\nX: ${event.x.toStringAsFixed(2)}\nY: ${event.y.toStringAsFixed(2)}\nZ: ${event.z.toStringAsFixed(2)}";
+      });
+    });
+
+    // Escuchar los eventos del giroscopio
+    gyroscopeEvents.listen((GyroscopeEvent event) {
+      setState(() {
+        _gyroscopeData =
+            "Giroscopio:\nX: ${event.x.toStringAsFixed(2)}\nY: ${event.y.toStringAsFixed(2)}\nZ: ${event.z.toStringAsFixed(2)}";
+      });
+    });
+
+    // Escuchar los eventos del magnetómetro
+    magnetometerEvents.listen((MagnetometerEvent event) {
+      setState(() {
+        _magnetometerData =
+            "Magnetómetro:\nX: ${event.x.toStringAsFixed(2)}\nY: ${event.y.toStringAsFixed(2)}\nZ: ${event.z.toStringAsFixed(2)}";
       });
     });
   }
@@ -34,7 +53,19 @@ class SensorScreenState extends State<SensorScreen> { // Clase pública
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Text(
-                _sensorData,
+                _accelerometerData,
+                textAlign: TextAlign.center,
+                style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 20),
+              Text(
+                _gyroscopeData,
+                textAlign: TextAlign.center,
+                style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 20),
+              Text(
+                _magnetometerData,
                 textAlign: TextAlign.center,
                 style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
@@ -44,7 +75,9 @@ class SensorScreenState extends State<SensorScreen> { // Clase pública
                 onPressed: () {
                   // Aquí puedes agregar lógica para refrescar o reiniciar datos
                   setState(() {
-                    _sensorData = "Datos del sensor no disponibles"; // Resetear datos
+                    _accelerometerData = "Acelerómetro: No disponible";
+                    _gyroscopeData = "Giroscopio: No disponible";
+                    _magnetometerData = "Magnetómetro: No disponible";
                   });
                 },
                 child: const Text('Reiniciar Datos'),
